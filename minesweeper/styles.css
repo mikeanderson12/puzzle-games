@@ -1,0 +1,476 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #4b5563;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.game-container {
+    background: white;
+    border-radius: 20px;
+    padding: 60px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.difficulty-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e5e7eb;
+    flex-wrap: wrap;
+}
+
+.difficulty-label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 1.1rem;
+}
+
+.difficulty-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.difficulty-btn {
+    background: #f3f4f6;
+    color: #374151;
+    border: 2px solid #d1d5db;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.difficulty-btn:hover {
+    background: #e5e7eb;
+    border-color: #dc2626;
+}
+
+.difficulty-btn.active {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    color: white;
+    border-color: #dc2626;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e5e7eb;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 1.1rem;
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #dc2626;
+}
+
+.control-button {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.control-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+}
+
+.control-button:active {
+    transform: scale(0.98);
+}
+
+.game-grid {
+    display: grid;
+    gap: 0;
+    border: 2px solid #6b7280;
+    margin: 0 auto;
+    user-select: none;
+    width: fit-content;
+}
+
+.cell {
+    width: 35px;
+    height: 35px;
+    background: #d1d5db;
+    border: 1px solid #6b7280;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.1s ease;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.cell:hover:not(.revealed):not(.flagged) {
+    background: #e5e7eb;
+}
+
+.cell:active:not(.revealed):not(.flagged) {
+    background: #f3f4f6;
+}
+
+.cell.revealed {
+    background: #f9fafb;
+    cursor: default;
+    border: 1px solid #e5e7eb;
+}
+
+.cell.flagged {
+    background: #fef3c7;
+}
+
+.cell.mine {
+    background: #fee2e2;
+}
+
+.cell.exploded {
+    background: #dc2626;
+    color: white;
+}
+
+.cell[data-count="1"] {
+    color: #2563eb;
+}
+
+.cell[data-count="2"] {
+    color: #16a34a;
+}
+
+.cell[data-count="3"] {
+    color: #dc2626;
+}
+
+.cell[data-count="4"] {
+    color: #7c3aed;
+}
+
+.cell[data-count="5"] {
+    color: #ea580c;
+}
+
+.cell[data-count="6"] {
+    color: #0891b2;
+}
+
+.cell[data-count="7"] {
+    color: #000000;
+}
+
+.cell[data-count="8"] {
+    color: #64748b;
+}
+
+.win-message,
+.lose-message {
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.win-message {
+    background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+}
+
+.lose-message {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+}
+
+.win-message.hidden,
+.lose-message.hidden {
+    display: none;
+}
+
+.win-message h2,
+.lose-message h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.win-message p,
+.lose-message p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.win-message .control-button,
+.lose-message .control-button {
+    background: white;
+    color: #1f2937;
+}
+
+.win-message .control-button:hover,
+.lose-message .control-button:hover {
+    background: #f3f4f6;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.help-button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.help-button {
+    display: inline-block;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.help-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #6b7280;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.modal-content h2 {
+    color: #1f2937;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-content ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+.modal-content strong {
+    color: #1f2937;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+}
+
+@media (max-width: 768px) {
+    header {
+        margin-bottom: 60px;
+    }
+
+    header h1 {
+        display: none;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .game-container {
+        padding: 10px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .difficulty-buttons {
+        gap: 6px;
+    }
+
+    .difficulty-btn {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+    }
+
+    .full-text {
+        display: none;
+    }
+
+    .game-grid {
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    /* Mobile-friendly: icon-only buttons */
+    .back-button {
+        font-size: 0;
+        padding: 8px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .back-button::before {
+        content: '←';
+        font-size: 1.2rem;
+    }
+
+    .help-button {
+        font-size: 0;
+        padding: 8px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .help-button::before {
+        content: '📖';
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BreakLock - Puzzle Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 BreakLock</h1>
+            <p class="subtitle">Connect the dots to crack the lock pattern!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-difficulty="easy">Easy (4<span class="dots-text"> dots</span>)</button>
+                <button class="difficulty-btn" data-difficulty="medium">Med<span class="full-text">ium</span> (5<span class="dots-text"> dots</span>)</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard (6<span class="dots-text"> dots</span>)</button>
+            </div>
+
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Attempts:</span>
+                    <span class="value" id="attempts">0</span>
+                </div>
+                <button id="reset-btn" class="control-button">New Game</button>
+            </div>
+
+            <div class="pattern-container">
+                <canvas id="pattern-canvas"></canvas>
+                <div id="dot-grid" class="dot-grid"></div>
+            </div>
+
+            <div class="current-pattern">
+                <h3>Your Pattern:</h3>
+                <div id="current-pattern-display" class="pattern-display">
+                    Draw a pattern to begin
+                </div>
+                <button id="submit-btn" class="submit-button" disabled>Submit Pattern</button>
+                <button id="clear-btn" class="clear-button">Clear</button>
+            </div>
+
+            <div class="feedback-section">
+                <h3>Previous Attempts:</h3>
+                <div id="attempts-history" class="attempts-history">
+                    <p class="empty-state">No attempts yet</p>
+                </div>
+            </div>
+
+            <div id="win-message" class="win-message hidden">
+                <h2>🎉 Lock Cracked!</h2>
+                <p>You found the correct pattern!</p>
+                <p class="attempts-count">Attempts: <span id="final-attempts">0</span></p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Find the secret lock pattern by connecting dots in the correct order.</p>
+                <p><strong>Draw Pattern:</strong> Click and drag to connect dots. You must connect the exact number of dots for your difficulty level.</p>
+                <p><strong>Feedback:</strong> After each attempt:</p>
+                <ul>
+                    <li><strong>●</strong> (filled) = Dot is correct and in the right position</li>
+                    <li><strong>○</strong> (hollow) = Dot is in the pattern but in the wrong position</li>
+                </ul>
+                <p><strong>Strategy:</strong> Use the feedback to deduce the correct pattern!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lights Out - Puzzle Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💡</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💡 Lights Out</h1>
+            <p class="subtitle">Turn off all the lights to win!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Moves:</span>
+                    <span class="value" id="moves">0</span>
+                </div>
+                <button id="reset-btn" class="control-button">New Game</button>
+            </div>
+
+            <div id="game-board" class="game-board"></div>
+
+            <div id="win-message" class="win-message hidden">
+                <h2>🎉 You Win!</h2>
+                <p>All lights are out!</p>
+                <p class="moves-count">Moves: <span id="final-moves">0</span></p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Turn off all the lights on the grid!</p>
+                <p><strong>How to Play:</strong> Click any light to toggle it and its adjacent neighbors (up, down, left, right).</p>
+                <p><strong>Strategy:</strong> Each click affects multiple lights, so plan your moves carefully to turn them all off!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

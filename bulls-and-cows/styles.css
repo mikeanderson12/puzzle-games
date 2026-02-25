@@ -1,0 +1,575 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #deb887ce;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+.game-container {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    font-weight: 600;
+    color: #374151;
+    font-size: 1.1rem;
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ea580c;
+}
+
+.control-button {
+    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.control-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(251, 146, 60, 0.4);
+}
+
+.control-button:active {
+    transform: scale(0.98);
+}
+
+.current-guess-section {
+    margin-bottom: 25px;
+}
+
+.current-guess-section h3 {
+    color: #1f2937;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.digit-input-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.digit-box {
+    position: relative;
+    width: 80px;
+    height: 130px;
+    background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+    border: 3px solid #d1d5db;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.digit-box:hover {
+    border-color: #fb923c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(251, 146, 60, 0.3);
+}
+
+.digit-box:focus {
+    border-color: #fb923c;
+    box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.2);
+}
+
+.digit-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    user-select: none;
+}
+
+.digit-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 5px;
+}
+
+.digit-up,
+.digit-down {
+    background: #fb923c;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.digit-up:hover,
+.digit-down:hover {
+    background: #f97316;
+    transform: scale(1.1);
+}
+
+.digit-up:active,
+.digit-down:active {
+    transform: scale(0.95);
+}
+
+.submit-button {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.submit-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+.feedback-legend {
+    background: #fef3c7;
+    border: 2px solid #fbbf24;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: #78350f;
+    font-weight: 500;
+}
+
+.bull-icon,
+.cow-icon {
+    font-size: 1.5rem;
+}
+
+.attempts-section {
+    margin-bottom: 25px;
+}
+
+.attempts-section h3 {
+    color: #1f2937;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.attempts-history {
+    max-height: 350px;
+    overflow-y: auto;
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.empty-state {
+    color: #9ca3af;
+    text-align: center;
+    font-style: italic;
+}
+
+.attempt-item {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.attempt-item.winning {
+    border-color: #10b981;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+}
+
+.attempt-guess {
+    display: flex;
+    gap: 8px;
+}
+
+.attempt-digit {
+    width: 40px;
+    height: 50px;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.attempt-feedback {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 120px;
+}
+
+.feedback-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.feedback-bulls {
+    color: #dc2626;
+}
+
+.feedback-cows {
+    color: #f59e0b;
+}
+
+.win-message {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 15px;
+    color: white;
+    margin-top: 20px;
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
+.win-message.hidden {
+    display: none;
+}
+
+.win-message h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.win-message p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.attempts-count {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.help-button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.help-button {
+    display: inline-block;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.help-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #6b7280;
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.modal-content h2 {
+    color: #1f2937;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.modal-content ul {
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #4b5563;
+    line-height: 1.8;
+}
+
+.modal-content strong {
+    color: #1f2937;
+}
+
+.instructions-content .note {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #6b7280;
+    margin-top: 15px;
+}
+
+.back-button-container {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-5px);
+}
+
+@media (max-width: 768px) {
+    header {
+        margin-bottom: 60px;
+    }
+
+    header h1 {
+        display: none;
+    }
+
+    .subtitle {
+        display: none;
+    }
+
+    .game-container {
+        padding: 20px;
+    }
+
+    .digit-input {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .digit-box {
+        width: 60px;
+        height: 100px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .digit-value {
+        font-size: 1.8rem;
+    }
+
+    .digit-controls {
+        margin-top: 3px;
+    }
+
+    .digit-up,
+    .digit-down {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    .win-message h2 {
+        font-size: 1.5rem;
+    }
+
+    .attempt-digit {
+        width: 30px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .feedback-legend {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .legend-item {
+        font-size: 0.8rem;
+    }
+
+    .bull-icon,
+    .cow-icon {
+        font-size: 1.2rem;
+    }
+
+    /* Mobile-friendly: icon-only buttons */
+    .back-button {
+        font-size: 0;
+        padding: 8px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .back-button::before {
+        content: '←';
+        font-size: 1.2rem;
+    }
+
+    .help-button {
+        font-size: 0;
+        padding: 8px;
+        min-width: 36px;
+        min-height: 36px;
+    }
+
+    .help-button::before {
+        content: '📖';
+        font-size: 1.2rem;
+    }
+}

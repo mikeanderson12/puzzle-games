@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku - Puzzle Game</title>
+    <link rel="icon" href="sudoku-icon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="sudoku-icon.svg" alt="Sudoku" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Sudoku</h1>
+            <p class="subtitle">Fill the grid with numbers 1-9</p>
+        </header>
+
+        <div class="game-container">
+            <div class="game-controls">
+                <div class="difficulty-selector">
+                    <span class="difficulty-label">Difficulty:</span>
+                    <div class="difficulty-buttons">
+                        <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+                        <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                        <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button id="new-game-btn" class="control-button">New Game</button>
+                    <button id="hint-btn" class="control-button">Hint</button>
+                    <button id="check-btn" class="control-button">Check</button>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">⏱️ Time:</span>
+                    <span class="value" id="timer">00:00</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">💡 Hints:</span>
+                    <span class="value" id="hints-count">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">❌ Mistakes:</span>
+                    <span class="value" id="mistakes-count">0</span>
+                </div>
+            </div>
+            
+            <div id="sudoku-grid" class="sudoku-grid"></div>
+
+            <div class="number-pad">
+                <button class="number-btn" data-number="1">1</button>
+                <button class="number-btn" data-number="2">2</button>
+                <button class="number-btn" data-number="3">3</button>
+                <button class="number-btn" data-number="4">4</button>
+                <button class="number-btn" data-number="5">5</button>
+                <button class="number-btn" data-number="6">6</button>
+                <button class="number-btn" data-number="7">7</button>
+                <button class="number-btn" data-number="8">8</button>
+                <button class="number-btn" data-number="9">9</button>
+                <button class="number-btn erase-btn" data-number="0">×</button>
+            </div>
+            
+            <div id="win-message" class="win-message hidden">
+                <h2>🎉 Puzzle Solved!</h2>
+                <p>Congratulations! You completed the Sudoku puzzle!</p>
+                <p class="final-stats">Time: <span id="final-time">00:00</span> | Mistakes: <span id="final-mistakes">0</span></p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play Sudoku</h2>
+                <p><strong>Objective:</strong> Fill the 9×9 grid with numbers 1-9 so that each row, column, and 3×3 box contains all digits from 1 to 9.</p>
+                <p><strong>How to Play:</strong></p>
+                <ol>
+                    <li>Click on an empty cell to select it</li>
+                    <li>Click a number from the number pad (1-9) to fill the cell</li>
+                    <li>Click "Erase" to clear a cell</li>
+                    <li>Use keyboard numbers 1-9 to enter values quickly</li>
+                    <li>Press Delete or Backspace to erase a cell</li>
+                </ol>
+                <p><strong>Rules:</strong></p>
+                <ul>
+                    <li>Each row must contain the numbers 1-9 without repetition</li>
+                    <li>Each column must contain the numbers 1-9 without repetition</li>
+                    <li>Each 3×3 box must contain the numbers 1-9 without repetition</li>
+                    <li>Given numbers (in bold) cannot be changed</li>
+                </ul>
+                <p><strong>Features:</strong></p>
+                <ul>
+                    <li><strong>Hint:</strong> Reveals one correct number (3 hints available)</li>
+                    <li><strong>Check:</strong> Validates your current solution</li>
+                    <li><strong>Timer:</strong> Track how long it takes to solve</li>
+                    <li><strong>Mistakes:</strong> Shows how many errors you've made</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

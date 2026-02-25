@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls & Cows - Puzzle Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%90%82</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐂 Bulls & Cows</h1>
+            <p class="subtitle">Try different codes to break the secret code!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Attempts:</span>
+                    <span class="value" id="attempts">0</span>
+                </div>
+                <button id="reset-btn" class="control-button">New Game</button>
+            </div>
+
+            <div class="current-guess-section">
+                <h3>Enter Your Guess:</h3>
+                <div class="digit-input-container">
+                    <div class="digit-box" data-index="0" tabindex="0">
+                        <span class="digit-value">0</span>
+                        <div class="digit-controls">
+                            <button class="digit-up">▲</button>
+                            <button class="digit-down">▼</button>
+                        </div>
+                    </div>
+                    <div class="digit-box" data-index="1" tabindex="0">
+                        <span class="digit-value">0</span>
+                        <div class="digit-controls">
+                            <button class="digit-up">▲</button>
+                            <button class="digit-down">▼</button>
+                        </div>
+                    </div>
+                    <div class="digit-box" data-index="2" tabindex="0">
+                        <span class="digit-value">0</span>
+                        <div class="digit-controls">
+                            <button class="digit-up">▲</button>
+                            <button class="digit-down">▼</button>
+                        </div>
+                    </div>
+                    <div class="digit-box" data-index="3" tabindex="0">
+                        <span class="digit-value">0</span>
+                        <div class="digit-controls">
+                            <button class="digit-up">▲</button>
+                            <button class="digit-down">▼</button>
+                        </div>
+                    </div>
+                </div>
+                <button id="submit-btn" class="submit-button">Submit Guess</button>
+            </div>
+
+            <div class="feedback-legend">
+                <div class="legend-item">
+                    <span class="bull-icon">🐂</span>
+                    <span>Bulls = Correct digit, correct position</span>
+                </div>
+                <div class="legend-item">
+                    <span class="cow-icon">🐄</span>
+                    <span>Cows = Correct digit, wrong position</span>
+                </div>
+            </div>
+
+            <div class="attempts-section">
+                <h3>Previous Attempts:</h3>
+                <div id="attempts-history" class="attempts-history">
+                    <p class="empty-state">No attempts yet</p>
+                </div>
+            </div>
+
+            <div id="win-message" class="win-message hidden">
+                <h2>🎉 Code Cracked!</h2>
+                <p>You discovered the code!</p>
+                <p class="attempts-count">Attempts: <span id="final-attempts">0</span></p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Guess the secret 4-digit code where each digit is between 0-9.</p>
+                <p><strong>Controls:</strong></p>
+                <ul>
+                    <li>Click the ▲/▼ buttons to change digits</li>
+                    <li>Click on a digit box and use arrow keys (↑/↓) to change values</li>
+                    <li>Use Tab to move between digit boxes</li>
+                </ul>
+                <p><strong>Feedback:</strong> After each guess:</p>
+                <ul>
+                    <li><strong>Bulls (🐂)</strong> = Number of digits that are correct and in the correct position</li>
+                    <li><strong>Cows (🐄)</strong> = Number of digits that are correct but in the wrong position</li>
+                </ul>
+                <p><strong>Strategy:</strong> Use the feedback to narrow down which digits are in the code and where they belong!</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>

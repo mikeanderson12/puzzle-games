@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Match - Puzzle Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🃏</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🃏 Card Match</h1>
+            <p class="subtitle">Find all the matching pairs!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="difficulty-selector">
+                <span class="difficulty-label">Difficulty:</span>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn active" data-difficulty="easy">Easy (4×4)</button>
+                    <button class="difficulty-btn" data-difficulty="medium">Med<span class="full-text">ium</span> (5×6)</button>
+                    <button class="difficulty-btn" data-difficulty="hard">Hard (6×6)</button>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">Moves:</span>
+                    <span class="value" id="moves">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Matches:</span>
+                    <span class="value" id="matches">0/8</span>
+                </div>
+                <button id="reset-btn" class="control-button">New Game</button>
+            </div>
+            
+            <div id="card-grid" class="card-grid"></div>
+            
+            <div id="win-message" class="win-message hidden">
+                <h2>🎉 All Matched!</h2>
+                <p>You found all pairs in <span id="final-moves">0</span> moves!</p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Find all matching pairs of cards by flipping them over two at a time.</p>
+                <p><strong>How to Play:</strong></p>
+                <ul>
+                    <li>Click on a card to flip it over and reveal its symbol</li>
+                    <li>Click on a second card to try to find its match</li>
+                    <li>If the cards match, they stay face up</li>
+                    <li>If they don't match, they flip back over</li>
+                    <li>Remember the positions and find all pairs!</li>
+                </ul>
+                <p><strong>Strategy:</strong> Try to memorize card positions and complete the game in as few moves as possible!</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper - Puzzle Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💣</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💣 Minesweeper</h1>
+            <p class="subtitle">Clear the board without hitting any mines!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="difficulty-selector">
+                <span class="difficulty-label">Difficulty:</span>
+                <div class="difficulty-buttons">
+                    <button class="difficulty-btn active" data-difficulty="easy">Easy (8×8)</button>
+                    <button class="difficulty-btn" data-difficulty="medium">Med<span class="full-text">ium</span> (12×12)</button>
+                    <button class="difficulty-btn" data-difficulty="hard">Hard (16×16)</button>
+                </div>
+            </div>
+
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">💣 Mines:</span>
+                    <span class="value" id="mines-count">10</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">🚩 Flags:</span>
+                    <span class="value" id="flags-count">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">⏱️ Time:</span>
+                    <span class="value" id="timer">0</span>
+                </div>
+                <button id="reset-btn" class="control-button">New Game</button>
+            </div>
+            
+            <div id="game-grid" class="game-grid"></div>
+            
+            <div id="win-message" class="win-message hidden">
+                <h2>🎉 You Won!</h2>
+                <p>You cleared all safe cells in <span id="final-time">0</span> seconds!</p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+
+            <div id="lose-message" class="lose-message hidden">
+                <h2>💥 Kaboom!</h2>
+                <p>You hit a mine!</p>
+                <button id="try-again-btn" class="control-button">Try Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Reveal all cells that don't contain mines without clicking on any mines.</p>
+                <p><strong>How to Play:</strong></p>
+                <ul>
+                    <li><strong>Left-click</strong> to reveal a cell</li>
+                    <li><strong>Right-click</strong> to place or remove a flag on a cell you think contains a mine</li>
+                    <li>Numbers show how many mines are adjacent to that cell (including diagonals)</li>
+                    <li>Empty cells automatically reveal adjacent cells</li>
+                    <li>Flag all mines and reveal all safe cells to win</li>
+                </ul>
+                <p><strong>Tips:</strong> Start by clicking cells in corners or edges. Use the numbers to deduce mine locations!</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

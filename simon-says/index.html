@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Says - Puzzle Game</title>
+    <link rel="icon" href="ss-icon.svg">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="ss-icon.svg" alt="Simon Says" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px;"> Simon Says</h1>
+            <p class="subtitle">Watch, remember, and repeat the pattern!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label">🎯 Level:</span>
+                    <span class="value" id="level-count">1</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">🏆 High Score:</span>
+                    <span class="value" id="high-score">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">📊 Current Score:</span>
+                    <span class="value" id="current-score">0</span>
+                </div>
+            </div>
+
+            <div class="simon-board">
+                <div class="button-grid">
+                    <button class="simon-button green" data-color="green" data-sound="0"></button>
+                    <button class="simon-button red" data-color="red" data-sound="1"></button>
+                    <button class="simon-button yellow" data-color="yellow" data-sound="2"></button>
+                    <button class="simon-button blue" data-color="blue" data-sound="3"></button>
+                </div>
+                <div class="center-circle">
+                    <button id="start-btn" class="start-button">START</button>
+                    <div id="message" class="message hidden"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="reset-btn" class="control-button">Reset Game</button>
+            </div>
+
+            <div id="game-over-message" class="game-over-message hidden">
+                <h2>Game Over!</h2>
+                <p id="final-message"></p>
+                <p class="final-stats">You reached level <span id="final-level">0</span> with a score of <span id="final-score">0</span>!</p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Watch the sequence of colors and repeat it correctly to advance to the next level!</p>
+                <p><strong>How to Play:</strong></p>
+                <ol>
+                    <li>Click the <strong>START</strong> button to begin</li>
+                    <li>Watch carefully as Simon lights up a sequence of colors</li>
+                    <li>After the sequence finishes, repeat it by clicking the colored buttons in the same order</li>
+                    <li>Each level adds one more color to the sequence</li>
+                    <li>The game ends if you make a mistake</li>
+                </ol>
+                <p><strong>Tips:</strong></p>
+                <ul>
+                    <li>Pay close attention to both the visual and audio cues</li>
+                    <li>Try to remember the pattern as a rhythm or melody</li>
+                    <li>Stay focused - the sequences get longer with each level!</li>
+                    <li>Take your time - there's no rush when repeating the sequence</li>
+                </ul>
+                <p><strong>Scoring:</strong></p>
+                <ul>
+                    <li>Each correct button press earns you 1 point</li>
+                    <li>Complete a level to advance and face a longer sequence</li>
+                    <li>Try to beat your high score!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

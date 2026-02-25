@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marble Solitaire - Puzzle Game</title>
+    <link rel="icon" href="marble-icon.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><img src="marble-icon.png" alt="Marble" style="width: 50px; height: 50px; vertical-align: middle; margin-right: 10px; border-radius: 50%;"> Marble Solitaire</h1>
+            <p class="subtitle">Jump marbles to remove them - aim for just one!</p>
+        </header>
+
+        <div class="game-container">
+            <div class="game-info">
+                <div class="info-item">
+                    <span class="label"><span class="hide-mobile">Marbles </span>Left:</span>
+                    <span class="value" id="marbles-count">32</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Moves:</span>
+                    <span class="value" id="moves-count">0</span>
+                </div>
+                <button id="reset-btn" class="control-button">New Game</button>
+            </div>
+            
+            <div id="game-board" class="game-board"></div>
+            
+            <div id="game-over-message" class="game-over-message hidden">
+                <h2 id="result-title">Game Over!</h2>
+                <p id="result-message"></p>
+                <p class="final-stats">Marbles left: <span id="final-marbles">0</span> | Moves: <span id="final-moves">0</span></p>
+                <button id="play-again-btn" class="control-button">Play Again</button>
+            </div>
+        </div>
+
+        <div class="back-button-container">
+            <a href="../index.html" class="back-button">← Back to Games</a>
+        </div>
+
+        <div class="help-button-container">
+            <button id="help-button" class="help-button">📖 How to Play</button>
+        </div>
+
+        <div id="instructions-modal" class="modal hidden">
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close">✕</button>
+                <h2>📖 How to Play</h2>
+                <p><strong>Objective:</strong> Remove marbles by jumping over them until only one marble remains!</p>
+                <p><strong>Steps:</strong></p>
+                <ol>
+                    <li>Click any marble to select it</li>
+                    <li>Click on a hole to move the marble</li>
+                    <li>Play ends when you are unable to move any marble</li>
+                </ol>
+                <p><strong>Rules:</strong></p>
+                <ul>
+                    <li>You can remove a marble by jumping an adjacent marble over it and into a hole</li>
+                    <li>No diagonal moves allowed - only horizontal and vertical</li>
+                    <li>You must jump over exactly one marble to remove it</li>
+                </ul>
+                <p><strong>Scoring:</strong></p>
+                <ul>
+                    <li><strong>1 marble left:</strong> You're a Genius! 🏆</li>
+                    <li><strong>2 marbles left:</strong> Very Intelligent 🌟</li>
+                    <li><strong>3 marbles left:</strong> Intelligent ⭐</li>
+                    <li><strong>4+ marbles left:</strong> More Practice! 💪</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
